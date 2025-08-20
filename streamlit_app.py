@@ -72,11 +72,11 @@ if p_choice:
     if p_choice == c_choice:
         st.markdown("<div style='text-align: center'><h2>🤝 It is a draw!</h2></div>", unsafe_allow_html=True)
     elif p_choice == words[0] and c_choice == words[2]:
-        st.markdown("<div style='text-align: center'><h2>🎉 You Win!</h2></div>", unsafe_allow_html=True)
+        st.markdown("<div style='text-align: center'><h2>🎉 You Win! 😊</h2></div>", unsafe_allow_html=True)
     elif p_choice == words[2] and c_choice == words[0]:
         st.markdown("<div style='text-align: center'><h2>😔 You Lose!</h2></div>", unsafe_allow_html=True)
     elif p_choice > c_choice:
-        st.markdown("<div style='text-align: center'><h2>🎉 You Win!</h2></div>", unsafe_allow_html=True)
+        st.markdown("<div style='text-align: center'><h2>🎉 You Win! 😊</h2></div>", unsafe_allow_html=True)
     elif p_choice < c_choice:
         st.markdown("<div style='text-align: center'><h2>😔 You Lose!</h2></div>", unsafe_allow_html=True)
     else:
