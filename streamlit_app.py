@@ -9,15 +9,14 @@ st.set_page_config(
 )
 
 
-def print_action(player, choice):
-    """Display the player's choice with appropriate emoji"""
-    emojis = {"rock": "🪨", "paper": "📄", "scissors": "✂️"}
-    emoji = emojis.get(choice, "❓")
-    return f"{player}: {choice.title()} {emoji}"
+def get_hand_emoji(choice):
+    """Get hand emoji for the choice"""
+    hand_emojis = {"rock": "✊", "paper": "✋", "scissors": "✌️"}
+    return hand_emojis.get(choice, "❓")
 
 
 # Main app
-st.title("🪨📄✂️ Rock Paper Scissors Game!")
+st.title("✊✋✌️ Rock Paper Scissors Game!")
 st.write("Welcome, to Rock Paper Scissor Game!")
 
 # Game logic
@@ -27,13 +26,13 @@ words = ["rock", "paper", "scissors"]
 col1, col2, col3 = st.columns(3)
 
 with col1:
-    rock_btn = st.button("🪨 Rock", use_container_width=True)
+    rock_btn = st.button("✊ Rock", use_container_width=True)
 
 with col2:
-    paper_btn = st.button("📄 Paper", use_container_width=True)
+    paper_btn = st.button("✋ Paper", use_container_width=True)
 
 with col3:
-    scissors_btn = st.button("✂️ Scissors", use_container_width=True)
+    scissors_btn = st.button("✌️ Scissors", use_container_width=True)
 
 # Handle button clicks
 p_choice = None
@@ -46,32 +45,44 @@ elif scissors_btn:
 
 # Game execution
 if p_choice:
-    # Display player choice
+    # Display choices side by side with big hand emojis
     st.write("---")
-    st.write("**Choices:**")
-    st.write(print_action('You', p_choice))
 
-    # Computer choice
-    c_random = random.randint(0, 2)
-    c_choice = words[c_random]
-    st.write(print_action('Computer', c_choice))
+    # Create two columns for the face-off
+    choice_col1, vs_col, choice_col2 = st.columns([2, 1, 2])
 
-    # Results
+    with choice_col1:
+        st.markdown(
+            f"<div style='text-align: center'><h3>You</h3><div style='font-size: 120px;'>{get_hand_emoji(p_choice)}</div><h4>{p_choice.title()}</h4></div>",
+            unsafe_allow_html=True)
+
+    with vs_col:
+        st.markdown("<div style='text-align: center; padding-top: 80px;'><h2>VS</h2></div>", unsafe_allow_html=True)
+
+    with choice_col2:
+        c_random = random.randint(0, 2)
+        c_choice = words[c_random]
+        st.markdown(
+            f"<div style='text-align: center'><h3>Computer</h3><div style='font-size: 120px;'>{get_hand_emoji(c_choice)}</div><h4>{c_choice.title()}</h4></div>",
+            unsafe_allow_html=True)
+
     st.write("---")
-    st.write("**Results:**")
 
+    # Results centered and prominent
     if p_choice == c_choice:
-        st.info('🤝 It is a draw!')
+        st.markdown("<div style='text-align: center'><h2>🤝 It is a draw!</h2></div>", unsafe_allow_html=True)
     elif p_choice == words[0] and c_choice == words[2]:
-        st.success('🎉 You Win!')
+        st.markdown("<div style='text-align: center'><h2>🎉 You Win!</h2></div>", unsafe_allow_html=True)
     elif p_choice == words[2] and c_choice == words[0]:
-        st.error('😔 You Lose!')
+        st.markdown("<div style='text-align: center'><h2>😔 You Lose!</h2></div>", unsafe_allow_html=True)
     elif p_choice > c_choice:
-        st.success('🎉 You Win!')
+        st.markdown("<div style='text-align: center'><h2>🎉 You Win!</h2></div>", unsafe_allow_html=True)
     elif p_choice < c_choice:
-        st.error('😔 You Lose!')
+        st.markdown("<div style='text-align: center'><h2>😔 You Lose!</h2></div>", unsafe_allow_html=True)
     else:
-        st.warning('❌ Sorry, you picked an invalid input\nRestart and try again!')
+        st.markdown(
+            "<div style='text-align: center'><h2>❌ Sorry, you picked an invalid input<br>Restart and try again!</h2></div>",
+            unsafe_allow_html=True)
 
 # Instructions
 st.write("---")
