@@ -16,7 +16,7 @@ def get_hand_emoji(choice):
 
 
 # Main app
-st.title("Rock Paper Scissors Game! 🪨📄✂️")
+st.title("🪨📄✂️\nRock Paper Scissors Game!")
 st.write("Welcome, to Rock Paper Scissor Game!")
 
 # Game logic
