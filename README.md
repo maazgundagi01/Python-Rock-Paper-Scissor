@@ -1,5 +1,5 @@
 # Python-Rock-Paper-Scissor
-## Demo:
+## Demo
 ### DEMO for Dear Non-Technical Reviewers
 - https://python-rock-paper-sciappr-zbcfpagazviab8zl4yxkpa.streamlit.app/
 ### DEMO for Dear Technical Reviewers
